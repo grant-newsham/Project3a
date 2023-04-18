@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stock Data Visualizer</title>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/myCSS.css') }}">
+</head>
+<body>
+    <h1>Stock Data Visualizer</h1>
+    <form method="POST">
+        <label for="stock_symbol">Select a stock to analyze:</label>
+        <select id="stock_symbol" name="stock_symbol">
+            <option value="AAPL">Apple Inc.</option>
+            <option value="GOOGL">Google</option>
+            <option value="MSFT">Microsoft Corporation</option>
+        </select>
+        <br><br>
+        <label for="chart_type">Chart Type:</label>
+        <select id="chart_type" name="chart_type">
+            <option value="1">Line Chart</option>
+            <option value="2">Bar Chart</option>
+        </select>
+        <br><br>
+        <label for="time_series">Time Series Function:</label>
+        <select id="time_series" name="time_series">
+            <option value="1">Daily Time Series</option>
+            <option value="2">Weekly Time Series</option>
+            <option value="3">Monthly Time Series</option>
+        </select>
+        <br><br>
+        <label for="start_date">Start Date:</label>
+        <input type="date" id="start_date" name="start_date">
+        <br><br>
+        <label for="end_date">End Date:</label>
+        <input type="date" id="end_date" name="end_date">
+        <br><br>
+        <input type="submit" value="Submit">
+    </form>
+    {% if chart %}
+        <embed type="image/svg+xml" src="{{ chart }}" />
+    {% endif %}
+</body>
+</html>
+
